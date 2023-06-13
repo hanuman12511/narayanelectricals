@@ -31,8 +31,9 @@ public class Img extends HttpServlet {
 		
 		String imageFileName=file.getSubmittedFileName();  // get selected image file name
 		System.out.println("Selected Image File Name : "+imageFileName);
-		
-		String uploadPath="C:/images/"+imageFileName;  // upload path where we have to upload our actual image
+		String path=request.getServletContext().getRealPath("images");
+		System.out.print(path);
+		String uploadPath=path+"/"+imageFileName;  // upload path where we have to upload our actual image
 		System.out.println("Upload Path : "+uploadPath);
 		
 		// Uploading our selected image into the images folder
@@ -61,9 +62,9 @@ public class Img extends HttpServlet {
 		try 
 		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/imageTutorial","root","your password");
+			connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","root");
 			PreparedStatement stmt;
-			String query="insert into image(imageFileName) values(?)";
+			String query="insert into  image(nameimage) values(?)";
 			stmt=connection.prepareStatement(query);
 			stmt.setString(1,imageFileName);
 			int row=stmt.executeUpdate(); // it returns no of rows affected.
@@ -71,6 +72,11 @@ public class Img extends HttpServlet {
 			if(row>0)
 			{
 				System.out.println("Image added into database successfully.");
+				 request.setAttribute("message", "Image added into database successfully.");
+
+	              // forwards to the message page
+	              getServletContext().getRequestDispatcher("/Message.jsp")
+	                  .include(request, response);
 			}
 			
 			else

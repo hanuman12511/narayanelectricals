@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <servlet>
+ 
+ 
+ <servlet>
+    <description></description>
+    <display-name>syncro.SynchronizeServlet</display-name>
+    <servlet-name>imageadd1</servlet-name>
+    <servlet-class>userdb.Img</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>imageadd1</servlet-name>
+    
+    <url-pattern>/uploadimage1</url-pattern>
+  </servlet-mapping>
+ 
+ 
+ <!--  
+ <servlet>
         <servlet-name>d</servlet-name>
         <servlet-class>userdb.UserDb</servlet-class>
     </servlet>
@@ -8,6 +24,8 @@
         <servlet-name>d</servlet-name>
         <url-pattern>/uploadServlet</url-pattern>
     </servlet-mapping>
+    
+    
      <servlet>
         <servlet-name>d1</servlet-name>
         <servlet-class>userdb.ShowImage</servlet-class>
@@ -16,6 +34,7 @@
         <servlet-name>d1</servlet-name>
         <url-pattern>/show</url-pattern>
     </servlet-mapping>
+  
      <servlet>
         <servlet-name>d7</servlet-name>
         <servlet-class>userdb.Img</servlet-class>
@@ -24,4 +43,15 @@
         <servlet-name>d7</servlet-name>
         <url-pattern>/AddImage</url-pattern>
     </servlet-mapping>
+      
+     <servlet>
+        <servlet-name>d7</servlet-name>
+        <servlet-class>userdb.Img</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>d7</servlet-name>
+        <url-pattern>/AddImage</url-pattern>
+    </servlet-mapping>
+     -->
+    
 </web-app>

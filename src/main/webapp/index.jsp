@@ -17,5 +17,19 @@
             <input type="file" name="photo" size="50" placeholder="Upload Your Image" required/><br><br>
             <input type="submit" value="Save">
         </form>
+        
+        
+<h1 style="color:red" align="center">ADD IMAGE DETAIL</h1>
+
+<div align="center">
+
+<form action="AddImage" method="post" enctype="multipart/form-data">
+   Select Image :
+   <input type="file" name="image">
+   <input type="submit" value="Add Image">
+</form>
+
+</div>
+        
     </body>
 </html>

@@ -1,41 +1,66 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%
+String id = request.getParameter("userid");
+String driver = "com.mysql.jdbc.Driver";
+String connectionUrl = "jdbc:mysql://localhost:3306/";
+String database = "db";
+String userid = "root";
+String password = "root";
+try {
+Class.forName(driver);
+} catch (ClassNotFoundException e) {
+e.printStackTrace();
+}
+Connection connection = null;
+Statement statement = null;
+ResultSet resultSet = null;
+%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-<form name="fileform" method="post" action="show" >
-             <input type="submit" value="Save">
-        </form>
-        <!DOCTYPE html> 
-<html> 
-<head> 
-<title> Java File Upload Servlet Example </title> 
-</head> 
 <body>
 
-  <form method="post" action="img1" enctype="multipart/form-data">
-    <input type="file" name="file" />
-    <input type="submit" value="Upload" />
-  </form>
+<h1>Retrieve data from database in jsp</h1>
+<table border="1">
+<tr>
+<td>first name</td>
+<td>last name</td>
+<td>City name</td>
+<td>Email</td>
 
+</tr>
+<h1>
+<% 
+String path=request.getServletContext().getRealPath("images");
+System.out.print(path);
+%>
+</h1>
 
-<h1 style="color:red" align="center">ADD IMAGE DETAIL</h1>
+<%
 
-<div align="center">
+try{
+connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+statement=connection.createStatement();
+String sql ="select * from image";
+resultSet = statement.executeQuery(sql);
+while(resultSet.next()){
+%>
+<img src="images/img.png">
+<tr>
+<td><img src="images/img.png"/></td>
+<td><img src="images/<%=resultSet.getString("nameimage") %>"/></td>
 
-<form action="AddImage" method="post" enctype="multipart/form-data">
-   Select Image :
-   <input type="file" name="image">
-   <input type="submit" value="Add Image">
-</form>
+</tr>
+<%
+}
+connection.close();
+} catch (Exception e) {
+e.printStackTrace();
+}
+%>
+</table> 
 
-</div>
-
-</body>
-</html>
 </body>
 </html>
