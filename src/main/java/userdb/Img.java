@@ -28,7 +28,8 @@ public class Img extends HttpServlet {
 		
 		System.out.println("In do post method of Add Image servlet.");
 		Part file=request.getPart("image");
-		
+		String n= request.getParameter("name");
+		System.out.print(n);
 		String imageFileName=file.getSubmittedFileName();  // get selected image file name
 		System.out.println("Selected Image File Name : "+imageFileName);
 		String path=request.getServletContext().getRealPath("images");
@@ -64,9 +65,11 @@ public class Img extends HttpServlet {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","root");
 			PreparedStatement stmt;
-			String query="insert into  image(nameimage) values(?)";
+			String query="insert into  images(name,imagename) values(?,?)";
 			stmt=connection.prepareStatement(query);
-			stmt.setString(1,imageFileName);
+			stmt.setString(1,n);
+			stmt.setString(2,imageFileName);
+			
 			int row=stmt.executeUpdate(); // it returns no of rows affected.
 			
 			if(row>0)

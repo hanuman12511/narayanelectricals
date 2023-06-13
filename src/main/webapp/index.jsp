@@ -24,6 +24,9 @@
 <div align="center">
 
 <form action="AddImage" method="post" enctype="multipart/form-data">
+<label for="lastName">Enter image name: </label>
+  <input type="text" name="name" size="50" placeholder="Enter Your LastName" /><br><br>
+          
    Select Image :
    <input type="file" name="image">
    <input type="submit" value="Add Image">

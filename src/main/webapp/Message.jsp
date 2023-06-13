@@ -43,14 +43,15 @@ System.out.print(path);
 try{
 connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 statement=connection.createStatement();
-String sql ="select * from image";
+String sql ="select * from images";
 resultSet = statement.executeQuery(sql);
 while(resultSet.next()){
 %>
 <tr>
 
-<td><img src="images/<%=resultSet.getString("nameimage") %>" style="width:100px"/></td>
-
+<td><img src="images/<%=resultSet.getString("imagename") %>" style="width:100px"/></td>
+<td><%=resultSet.getString("imagename") %></td>
+<td><%=resultSet.getString("name") %></td>
 </tr>
 <%
 }
