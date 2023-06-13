@@ -47,10 +47,9 @@ String sql ="select * from image";
 resultSet = statement.executeQuery(sql);
 while(resultSet.next()){
 %>
-<img src="images/img.png">
 <tr>
-<td><img src="images/img.png"/></td>
-<td><img src="images/<%=resultSet.getString("nameimage") %>"/></td>
+
+<td><img src="images/<%=resultSet.getString("nameimage") %>" style="width:100px"/></td>
 
 </tr>
 <%
