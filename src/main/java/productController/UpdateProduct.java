@@ -27,7 +27,11 @@ public class UpdateProduct extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int  id=Integer.parseInt(request.getParameter("id"));
+		response.getWriter().append("Served at: "+id).append(request.getContextPath());
+		Object data = "Some data, can be a String or a Javabean";
+	    request.setAttribute("data", data);
+	    request.getRequestDispatcher("Updateproduct.jsp").forward(request, response);
 	}
 
 	/**
