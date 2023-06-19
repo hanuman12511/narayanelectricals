@@ -105,12 +105,12 @@ ResultSet resultSet = null;
 		</form>
 		
 		
-<table border="1">
+<table border="1" width="500px">
 <tr>
-<td>first name</td>
-<td>last name</td>
-<td>City name</td>
-<td>Email</td>
+<td>RsNo.</td>
+<td>Image</td>
+<td>name</td>
+<td>rate</td>
 
 </tr>
 <h1>
@@ -133,9 +133,10 @@ int pid=resultSet.getInt("id");
 <tr>
 <td><%=pid %></td>
 <td><img src="images/<%=resultSet.getString("imagename") %>" style="width:100px"/></td>
-<td><%=resultSet.getString("imagename") %></td>
 <td><%=resultSet.getString("name") %></td>
+<td><%=resultSet.getString("rate") %></td>
 <td> <a href="DeleteProduct?id=<%=pid %>">Delete</a></td>
+<td> <a href="UpdateProduct?id=<%=pid %>">Edit</a></td>
 </tr>
 <%
 }
