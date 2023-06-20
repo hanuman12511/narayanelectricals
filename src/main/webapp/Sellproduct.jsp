@@ -75,31 +75,17 @@ ResultSet resultSet = null;
   </div>
 </nav>
 <div class="d-flex align-items-start">
+  <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
  <jsp:include page ="SideMenu.jsp" />
+    
+      </div>
   <div class="tab-content" id="v-pills-tabContent">
     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
     <div class="container ">
  	<div class="row ">
     	<div class="col  col-lg-8" style="width:400px ;margin-left: 50%">
     	  <form name="fileform" action="AddImage1" method="post" enctype="multipart/form-data">
-    	<div class="mb-3">
- 			 <label for="formGroupExampleInput" class="form-label">Add Product Information</label>
-  			</div>
-    		<div class="mb-3">
- 			 <label for="formGroupExampleInput" class="form-label">Product Name:-</label>
-  				<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Product Name.." name="name">
-				</div>
-			<div class="mb-3">
-  			<label for="formGroupExampleInput2" class="form-label">Product Rate:-</label>
-  			<input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter Product Rate..." name="rate">
-			</div>
-			<div class="mb-3">
-  				  Select Image :
-  			 <input type="file" name="image">
-   					</div>
-			<div class="mb-3">
-  			<input type="submit" class="form-control" id="formGroupExampleInput2" value="Add Product">
-			</div>
+    	
 		</form>
 		
 		

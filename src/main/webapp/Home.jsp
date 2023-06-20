@@ -75,48 +75,24 @@ ResultSet resultSet = null;
   </div>
 </nav>
 <div class="d-flex align-items-start">
- <jsp:include page ="SideMenu.jsp" />
-  <div class="tab-content" id="v-pills-tabContent">
-    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+  <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+    
+      </div>
+ 
     <div class="container ">
  	<div class="row ">
-    	<div class="col  col-lg-8" style="width:400px ;margin-left: 50%">
-    	  <form name="fileform" action="AddImage1" method="post" enctype="multipart/form-data">
-    	<div class="mb-3">
- 			 <label for="formGroupExampleInput" class="form-label">Add Product Information</label>
-  			</div>
-    		<div class="mb-3">
- 			 <label for="formGroupExampleInput" class="form-label">Product Name:-</label>
-  				<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Product Name.." name="name">
-				</div>
-			<div class="mb-3">
-  			<label for="formGroupExampleInput2" class="form-label">Product Rate:-</label>
-  			<input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter Product Rate..." name="rate">
-			</div>
-			<div class="mb-3">
-  				  Select Image :
-  			 <input type="file" name="image">
-   					</div>
-			<div class="mb-3">
-  			<input type="submit" class="form-control" id="formGroupExampleInput2" value="Add Product">
-			</div>
-		</form>
-		
-		
-<table border="1" width="500px">
-<tr>
-<td>RsNo.</td>
-<td>Image</td>
-<td>name</td>
-<td>rate</td>
+    	
+    	
+			
 
-</tr>
-<h1>
 <% 
 String path=request.getServletContext().getRealPath("images");
 System.out.print(path);
 %>
-</h1>
+
+
+
 
 <%
 
@@ -128,14 +104,15 @@ resultSet = statement.executeQuery(sql);
 while(resultSet.next()){
 int pid=resultSet.getInt("id");
 %>
-<tr>
-<td><%=pid %></td>
-<td><img src="images/<%=resultSet.getString("imagename") %>" style="width:100px"/></td>
-<td><%=resultSet.getString("name") %></td>
-<td><%=resultSet.getString("rate") %></td>
-<td> <a href="DeleteProduct?id=<%=pid %>">Delete</a></td>
-<td> <a href="UpdateProduct?id=<%=pid %>">Edit</a></td>
-</tr>
+
+<div class=" col-lg-4">
+<a href="SingleProduct?id=<%=pid %>">
+<img src="images/<%=resultSet.getString("imagename") %>" style="width:100px"/>
+<p><%=resultSet.getString("name") %></p>
+<p><%=resultSet.getString("rate") %></p>
+</a>
+</div>
+
 <%
 }
 connection.close();
@@ -143,18 +120,16 @@ connection.close();
 e.printStackTrace();
 }
 %>
-</table> 
-    </div>
-   </div>
+
 </div>
+
+ 
     
     
     </div>
-    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Profile</div>
-    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">Message</div>
-    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">Seting</div>
+    
   </div>
-</div>
+
   
     </body>
 </html>
