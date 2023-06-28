@@ -71,6 +71,35 @@ String prate=null;
 			System.out.print(pname);
 			System.out.print(pimage);
 		
+			
+			String sql1 ="select * from addtocart where pid="+id;
+			resultSet = statement.executeQuery(sql);
+			if(resultSet.next()){
+				System.out.print("*********************************************");
+				int qty=resultSet.getInt("qty");
+				qty++;
+				PreparedStatement stmt;
+				String query="update addtocart set qty = ? where pid=?";
+				stmt=connection.prepareStatement(query);
+				stmt.setInt(1,qty);
+				
+				stmt.setString(2,proid);
+				
+				int row=stmt.executeUpdate(); // it returns no of rows affected.
+				
+				if(row>0) {
+					
+					 request.setAttribute("message", "Image added into database successfully.");
+
+					 // response.sendRedirect("Home.jsp");
+						request.getRequestDispatcher("Home.jsp").forward(request, response);
+				}
+				
+			}
+			else {
+				
+				System.out.print("********************%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*************************");
+			
 			PreparedStatement stmt;
 			String query="insert into  addtocart(pid,qty) values(?,?)";
 			stmt=connection.prepareStatement(query);
@@ -81,11 +110,11 @@ String prate=null;
 			
 			if(row>0)
 			{response.getWriter().append("Served at: "+pimage+"\n"+row);	
-				System.out.println("Image added into database successfully.");
+				
 				 request.setAttribute("message", "Image added into database successfully.");
 
-				  response.sendRedirect("Home.jsp");
-					//request.getRequestDispatcher("Home.jsp").forward(request, response);
+				 // response.sendRedirect("Home.jsp");
+					request.getRequestDispatcher("Home.jsp").forward(request, response);
 			}
 			
 			else
@@ -93,7 +122,7 @@ String prate=null;
 				System.out.println("Failed to upload image.");
 			}
 			
-		
+			}
 			}catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();	

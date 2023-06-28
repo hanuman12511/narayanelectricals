@@ -6,7 +6,7 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%
-String id = request.getParameter("userid");
+//String id = request.getParameter("userid");
 String driver = "com.mysql.jdbc.Driver";
 String connectionUrl = "jdbc:mysql://localhost:3306/";
 String database = "db";
@@ -102,17 +102,18 @@ System.out.print(path);
 try{
 connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 statement=connection.createStatement();
-String sql ="select * from product";
+String sql ="select pid from addtocart";
 resultSet = statement.executeQuery(sql);
 while(resultSet.next()){
-int pid=resultSet.getInt("id");
+	
+int pid=resultSet.getInt("pid");
 %>
-
+<p>data</p>
 <div class=" col-lg-4">
 <a href="SingleProduct?id=<%=pid %>">
-<img src="images/<%=resultSet.getString("imagename") %>" style="width:100px"/>
-<p><%=resultSet.getString("name") %></p>
-<p><%=resultSet.getString("rate") %></p>
+Cart
+<%=pid %>
+
 </a>
 </div>
 

@@ -1,4 +1,5 @@
-package home;
+package productController;
+
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -14,14 +15,14 @@ import java.sql.Connection;
 /**
  * Servlet implementation class SingleProduct
  */
-@WebServlet("/SingleProduct")
-public class SingleProduct extends HttpServlet {
+@WebServlet("/CartServlet")
+public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SingleProduct() {
+    public CartServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,7 +32,7 @@ public class SingleProduct extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String pid =request.getParameter("id");
+	/*	String pid =request.getParameter("id");
 		response.getWriter().append("Served at: "+pid).append(request.getContextPath());
 		request.setAttribute("name", "Hussein Terek");
 		request.setAttribute("name1", " Terek");
@@ -55,7 +56,7 @@ ResultSet resultSet = null;
 try{
 connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 statement=connection.createStatement();
-String sql ="select * from product where id="+pid;
+String sql ="select * from addtocart";
 resultSet = statement.executeQuery(sql);
 while(resultSet.next()){
 int pid1=resultSet.getInt("id");
@@ -64,14 +65,15 @@ request.setAttribute("name",  resultSet.getString("name"));
 request.setAttribute("imagename",  resultSet.getString("imagename"));
 request.setAttribute("rate",  resultSet.getString("rate"));
 }
+		*/
 		
-		
-//response.sendRedirect("DetailsProduct.jsp");
-		request.getRequestDispatcher("DetailsProduct.jsp").forward(request, response);
-	}catch (Exception e) {
+response.sendRedirect("Cart.jsp");
+		//request.getRequestDispatcher("Cartt.jsp").forward(request, response);
+
+	/*}catch (Exception e) {
 		// TODO: handle exception
 		e.printStackTrace();	
-	}
+	}*/
 }
 
 	/**
